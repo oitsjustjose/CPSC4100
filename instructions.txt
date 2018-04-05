@@ -1,0 +1,3 @@
+draw_filled_box, 3, 4
+draw_horizontal_line, 8
+draw_empty	_box, 3, 4
