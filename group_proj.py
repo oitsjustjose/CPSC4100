@@ -1,99 +1,123 @@
 import os
 
+grid = [[" " for x in range(32)] for y in range(32)] 
+
 def clear():
 	os.system('cls' if os.name == 'nt' else 'clear')
-
-
-def print_sameline(to_print):
-	print(to_print, end='', flush=True)
 
 
 def print_err(cmd):
 	print("Command: {} not found".format(cmd))
 
 
-def draw_filled_box(w, h):
+def print_grid():
+	global grid
+	for row in grid:
+		for col in row:
+			print(col, end='', flush=True)
+		print("")
+
+
+def draw_filled_box(x, y, w, h):
+	global grid
+	tally = 0
 	# Draw the filled box:
 	for i in range(h):
 		for j in range(w):
-			print_sameline('*')
-		print("")
+			grid[y + j][x + i] = '#'
 
 
-def draw_empty_box(w, h):
+def draw_empty_box(x, y, w, h):
 	# Draw the box:
 	for i in range(h):
 		# If it's the top or bottom:
-		if i == 0 or i == h - 1:
-			for j in range(w):
-				print_sameline('*')
+		for j in range(w):
+			if i == 0 or i == h - 1:
+				grid[y + j][x + i] = '#'
 		# It's not the top or bottom:
-		else:
-			for j in range(w):
-				if j == 0 or j == w - 1:
-					print_sameline('*')
-				else:
-					print_sameline(" ")
+			elif j == 0 or j == w - 1:
+				grid[y + j][x + i] = '#'
 		print("")
 
 
-def draw_diagonal(size, dir):
+def draw_diagonal(x, y, size, dir):
+	global grid
 	if "right" in dir:
 		i = 0
 		while i < size:
 			j = size
 			while j >= 0:
 				if i == j:
-					print_sameline('/')
-				else:
-					print_sameline(" ")
+					grid[y + j][x - i] = '/'
 				j -= 1
-			print("")
 			i += 1
 	else:
 		for i in range(size):
 			for j in range(size):
 				if i == j:
-					print_sameline('\\')
-				else:
-					print_sameline(" ")
-			print("")
+					grid[y + j][x + i] = '\\'
 
 
-def draw_vertical(size):
+def draw_vertical(x, y, size):
 	for i in range(size):
-			print("|")
+		grid[y + i][x] = "|"
 
 
-def draw_horizontal(size):
+def draw_horizontal(x, y, size):
 	# Print them (and a newline):
 	for i in range(size):
-			print_sameline("-")
-	print("")
+		grid[y][x + i] = "-"
+
+
+def fill(x, y):
+	if grid[y][x] == " ":
+		grid[y][x] = "@"
+	try:
+		if grid[y - 1][x] == " ":
+			fill(x, y - 1)
+	except IndexError:
+		pass
+	try:
+		if grid[y + 1][x] == " ":
+			fill(x, y + 1)
+	except IndexError:
+		pass
+	try:
+		if grid[y][x - 1] == " ":
+			fill(x - 1, y)
+	except IndexError:
+		pass
+	try:
+		if grid[y][x + 1] == " ":
+			fill(x + 1, y)
+	except IndexError:
+		pass
 
 
 def main():
-	clear()
-	file = open(input("File for instructions:"), "r")
+	file = open("instructions.txt", "r")
 	for cmd in file.readlines():
 		parts = cmd.lower().replace(" ", "").split(",")
-		# Expecting draw_horizontal_line, size
-		if "draw_horizontal_line" in parts[0] and len(parts) == 2:
-			draw_horizontal(int(parts[1]))
-		# Expecting draw_vertical_line, size
-		elif "draw_vertical_line" in parts[0] and len(parts) == 2:
-			draw_vertical(int(parts[1]))
-		# Expecting draw_diagonal_line, size, dir
-		elif "draw_diagonal_line" in parts[0] and len(parts) == 3:
-			draw_diagonal(int(parts[1]), parts[2])
-		# Expecting draw_empty_box, w, h
-		elif "draw_empty_box" in parts[0] and len(parts) == 3:
-			draw_empty_box(int(parts[1]), int(parts[2]))
-		# Expecting draw_filled_box, w, h
-		elif "draw_filled_box" in parts[0] and len(parts) == 3:
-			draw_filled_box(int(parts[1]), int(parts[2]))
+		# Expecting draw_horizontal_line, x, y, size
+		if "draw_horizontal_line" in parts[0] and len(parts) == 4:
+			draw_horizontal(int(parts[1]), int(parts[2]), int(parts[3]))
+		# Expecting draw_vertical_line, x, y, size
+		elif "draw_vertical_line" in parts[0] and len(parts) == 4:
+			draw_vertical(int(parts[1]), int(parts[2]), int(parts[3]))
+		# Expecting draw_diagonal_line, x, y, size, dir
+		elif "draw_diagonal_line" in parts[0] and len(parts) == 5:
+			draw_diagonal(int(parts[1]), int(parts[2]), int(parts[3]), parts[4])
+		# Expecting draw_empty_box, x, y, w, h
+		elif "draw_empty_box" in parts[0] and len(parts) == 5:
+			draw_empty_box(int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]))
+		# Expecting draw_filled_box, x, y, w, h
+		elif "draw_filled_box" in parts[0] and len(parts) == 5:
+			draw_filled_box(int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]))
+		elif "fill" in parts[0] and len(parts) == 3:
+			fill(int(parts[1]), int(parts[2]))
 		else:
 			print_err(cmd)
+	print_grid()
 
 
 if __name__ == "__main__":

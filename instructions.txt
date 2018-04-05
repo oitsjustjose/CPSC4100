@@ -1,6 +1,7 @@
-draw_filled_box, 3, 4
-draw_horizontal_line, 8
-draw_empty_box, 3, 4
-draw_vertical_line, 5
-draw_diagonal_line, 16, right
-draw_diagonal_line, 16, left
+draw_diagonal_line, 16, 8, 7, right
+draw_diagonal_line, 17, 8, 7, left
+draw_horizontal_line, 9, 15, 16
+draw_vertical_line, 7, 7, 16
+draw_vertical_line, 26, 7, 16
+fill, 13, 16
+draw_empty_box, 0, 0, 4, 4
