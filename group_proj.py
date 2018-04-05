@@ -83,9 +83,9 @@ def main():
 		# Expecting draw_vertical_line, size
 		elif "draw_vertical_line" in parts[0] and len(parts) == 2:
 			draw_vertical(int(parts[1]))
-		# Expecting draw_horizontal_line, size, dir
-		elif "draw_horizontal_line" in parts[0] and len(parts) == 3:
-			draw_horizontal(int(parts[1]), parts[2])
+		# Expecting draw_diagonal_line, size, dir
+		elif "draw_diagonal_line" in parts[0] and len(parts) == 3:
+			draw_diagonal(int(parts[1]), parts[2])
 		# Expecting draw_empty_box, w, h
 		elif "draw_empty_box" in parts[0] and len(parts) == 3:
 			draw_empty_box(int(parts[1]), int(parts[2]))
