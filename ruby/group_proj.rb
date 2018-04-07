@@ -70,16 +70,16 @@ module Drawable
   def draw_horizontal_line(length:, point:)
     mover = point.dup
     length.times do |x_offset|
-      mover = mover.move_right
       mover.set(char: '-')
+      mover = mover.move_right
     end
   end
 
   def draw_vertical_line(length:, point:)
     mover = point.dup
     length.times do |y_offset|
-      mover = mover.move_down
       mover.set(char: '|')
+      mover = mover.move_down
     end
   end
 
@@ -132,7 +132,7 @@ class Constructor
   attr_reader :game_board
 
   def initialize(file:)
-    @game_board = Board.new(height: 50)
+    @game_board = Board.new(height: 32, width: 32)
 
     process_instructions(file)
   end
