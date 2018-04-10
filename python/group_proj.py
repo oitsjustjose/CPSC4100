@@ -1,9 +1,7 @@
 import os
+import sys
 
 grid = [[" " for x in range(32)] for y in range(32)] 
-
-def clear():
-	os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def print_err(cmd):
@@ -69,33 +67,41 @@ def draw_horizontal(x, y, size):
 		grid[y][x + i] = "-"
 
 
-def fill(x, y):
+def fill(x, y, char):
 	if grid[y][x] == " ":
-		grid[y][x] = "@"
+		grid[y][x] = char
 	try:
 		if grid[y - 1][x] == " ":
-			fill(x, y - 1)
+			fill(x, y - 1, char)
 	except IndexError:
 		pass
 	try:
 		if grid[y + 1][x] == " ":
-			fill(x, y + 1)
+			fill(x, y + 1, char)
 	except IndexError:
 		pass
 	try:
 		if grid[y][x - 1] == " ":
-			fill(x - 1, y)
+			fill(x - 1, y, char)
 	except IndexError:
 		pass
 	try:
 		if grid[y][x + 1] == " ":
-			fill(x + 1, y)
+			fill(x + 1, y, char)
 	except IndexError:
 		pass
 
 
 def main():
-	file = open("instructions.txt", "r")
+	if len(sys.argv) == 1:
+		file = open(input("Path to instructions:\n"), "r")
+	elif len(sys.argv) == 2:
+		file = open(sys.argv[1], "r")
+	else:
+		print("Incorrect launch arguments. Run either:")
+		print("    - python group_proj.py")
+		print("    - python group_proj.py <path to instructions>")
+		return
 	for cmd in file.readlines():
 		parts = cmd.lower().replace(" ", "").split(",")
 		# Expecting draw_horizontal_line, x, y, size
@@ -113,8 +119,8 @@ def main():
 		# Expecting draw_filled_box, x, y, w, h
 		elif "draw_filled_box" in parts[0] and len(parts) == 5:
 			draw_filled_box(int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]))
-		elif "fill" in parts[0] and len(parts) == 3:
-			fill(int(parts[1]), int(parts[2]))
+		elif "fill" in parts[0] and len(parts) == 4:
+			fill(int(parts[1]), int(parts[2]), parts[3][0])
 		else:
 			print_err(cmd)
 	print_grid()

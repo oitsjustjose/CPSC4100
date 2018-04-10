@@ -3,5 +3,5 @@ draw_diagonal_line, 17, 8, 7, left
 draw_horizontal_line, 9, 15, 16
 draw_vertical_line, 7, 7, 16
 draw_vertical_line, 26, 7, 16
-fill, 13, 16
+fill, 16, 13, @#$%^&
 draw_empty_box, 0, 0, 4, 4
