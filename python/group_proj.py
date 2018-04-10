@@ -18,6 +18,11 @@ def print_grid():
 
 def draw_filled_box(x, y, w, h):
 	global grid
+	# No-Op invalid inputs:
+	if x < 0 or y < 0 or w < 1 or h < 1:
+		return
+	if y > len(grid) or x > len(grid[0]) or (y + w) > len(grid) or (x + h)  > len(grid[0]):
+		return
 	tally = 0
 	# Draw the filled box:
 	for i in range(h):
@@ -26,6 +31,12 @@ def draw_filled_box(x, y, w, h):
 
 
 def draw_empty_box(x, y, w, h):
+	global grid
+	# No-Op invalid inputs:
+	if x < 0 or y < 0 or w < 1 or h < 1:
+		return
+	if y > len(grid) or x > len(grid[0]) or (y + w) > len(grid) or (x + h)  > len(grid[0]):
+		return
 	# Draw the box:
 	for i in range(h):
 		# If it's the top or bottom:
@@ -40,7 +51,7 @@ def draw_empty_box(x, y, w, h):
 
 def draw_diagonal(x, y, size, dir):
 	global grid
-	if "left" in dir:
+	if "right" in dir:
 		i = 0
 		while i < size:
 			j = size
