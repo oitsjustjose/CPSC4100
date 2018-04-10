@@ -40,7 +40,7 @@ def draw_empty_box(x, y, w, h):
 
 def draw_diagonal(x, y, size, dir):
 	global grid
-	if "right" in dir:
+	if "left" in dir:
 		i = 0
 		while i < size:
 			j = size
@@ -119,6 +119,7 @@ def main():
 		# Expecting draw_filled_box, x, y, w, h
 		elif "draw_filled_box" in parts[0] and len(parts) == 5:
 			draw_filled_box(int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]))
+		# Expecting fill, x, y, char
 		elif "fill" in parts[0] and len(parts) == 4:
 			fill(int(parts[1]), int(parts[2]), parts[3][0])
 		else:
