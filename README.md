@@ -45,7 +45,8 @@ Sets characters on board to `/` for `direction==left`
 ### fill
 Sets characters on board to `@`.
 We are using a simple [flood-fill algorithm](https://en.wikipedia.org/wiki/Flood_fill) to implement this feature, [here is a good reference](https://en.wikipedia.org/wiki/Flood_fill).
-`fill, x_cord, y_cord`
+`fill, x_cord, y_cord, char`
+It's worth noting that this fill command should be able to take in a **string** of any length and only get the **first** character of that string (meaning if it's a string of length 1, we're good, but if someone types in "@%&#^", then only @ is printed)
 
 ## Example Output
 There is a text-file, `example_out.txt` in the root of this repository which we can compare each other's output against. There are several online tools you can use to easily compare your output vs. our group's expected output:
