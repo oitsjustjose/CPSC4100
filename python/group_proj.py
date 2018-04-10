@@ -51,6 +51,9 @@ def draw_empty_box(x, y, w, h):
 
 def draw_diagonal(x, y, size, dir):
 	global grid
+	# No-Op invalid inputs:
+	if x < 1 or y < 1 or size < 1 or y + size > len(grid) or x + size > len(grid[0]):
+		return
 	if "right" in dir:
 		i = 0
 		while i < size:
@@ -68,17 +71,29 @@ def draw_diagonal(x, y, size, dir):
 
 
 def draw_vertical(x, y, size):
+	global grid
+	# No-Op invalid inputs:
+	if x < 1 or y < 1 or size < 1 or y + size > len(grid):
+		return
 	for i in range(size):
 		grid[y + i][x] = "|"
 
 
 def draw_horizontal(x, y, size):
+	global grid
+	# No-Op invalid inputs:
+	if x < 1 or y < 1 or size < 1 or x + size > len(grid[0]):
+		return
 	# Print them (and a newline):
 	for i in range(size):
 		grid[y][x + i] = "-"
 
 
 def fill(x, y, char):
+	global grid
+	# No-Op invalid inputs:
+	if x < 1 or y < 1:
+		return
 	if grid[y][x] == " ":
 		grid[y][x] = char
 	try:
