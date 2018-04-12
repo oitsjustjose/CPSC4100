@@ -5,15 +5,16 @@ grid = [[" " for x in range(32)] for y in range(32)]
 
 
 def print_err(cmd):
-	print("Command: {} not found".format(cmd))
+	print("Command: "+cmd+" not found")
 
 
 def print_grid():
 	global grid
 	for row in grid:
+		row_text = ""
 		for col in row:
-			print(col, end='', flush=True)
-		print("")
+			row_text += col
+		print(row_text)
 
 
 def draw_filled_box(x, y, w, h):
