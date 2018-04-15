@@ -1,4 +1,4 @@
-# CPSC 4100 - Group 5 Project
+# CPSC 4100 - Group 5 Project - Due 4/18/2018
 ## TODO
 * We need all of the submissions.
 * [We need to discuss edge-cases](https://github.com/oitsjustjose/CPSC4100/issues/3).
