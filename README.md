@@ -2,9 +2,9 @@
 ## TODO
 * We need all of the submissions.
 * [We need to discuss edge-cases](https://github.com/oitsjustjose/CPSC4100/issues/3).
-* [We need to decide if we are supporting shapes.](https://github.com/oitsjustjose/CPSC4100/issues/4)
-* [We need to decide if we are allowing the board size to be configurable.](https://github.com/oitsjustjose/CPSC4100/issues/5)
-* [Do we allow the fill-character to be specified?](https://github.com/oitsjustjose/CPSC4100/issues/6)
+* No Shape support. ~~[We need to decide if we are supporting shapes.](https://github.com/oitsjustjose/CPSC4100/issues/4)~~
+* No configurable board size. ~~[We need to decide if we are allowing the board size to be configurable.](https://github.com/oitsjustjose/CPSC4100/issues/5)~~
+* Yes, fill will take a string and we use the first character of that string. ~~[Do we allow the fill-character to be specified?](https://github.com/oitsjustJose/CPSC4100/issues/6)~~
 * [Instructions for usage / professor.](https://github.com/oitsjustjose/CPSC4100/issues/7)
 
 ## Assignment
@@ -15,7 +15,7 @@ Your program will read in a sequence of “instructions” and generate an outpu
 You must be able to at least draw vertical and horizontal straight lines, and fill closed regions with a given text character.
 
 ## Languages
-* Joshua Freeman
+* Joshua Freeman - C
 * Jose Stovall - **Python (Done)**
 * Colby Myers
 * Aaron Boggs - **Ruby (Done)**
@@ -25,6 +25,11 @@ You must be able to at least draw vertical and horizontal straight lines, and fi
 These are read-in from a text-file in the root of this repository: `instructions.txt`. Each of our programs should read from this file and produce their output. We support the following instructions:
 
 NOTE! Some of the instructions have outstanding TODOs, please reference the top of this README for more information.
+
+### Invalid instructions
+Any invalid instructions, or instructions that result in invalid operations are simply noop'd. That is, they do not halt the program, but instead fail silently - letting further instructions continue.
+
+Example: `draw_horizontal_line -10, -100, 40`
 
 ### Board
 Currently hardcoded to be 32x32 size. Prefilled with a character of ` ` (space).
@@ -43,9 +48,9 @@ Sets characters on board to `/` for `direction==left`
 `draw_diagonal_line, x_cord, y_cord, length, direction`
 
 ### fill
-Sets characters on board to `@`.
+Sets characters on board to the first character of string.
 We are using a simple [flood-fill algorithm](https://en.wikipedia.org/wiki/Flood_fill) to implement this feature, [here is a good reference](https://en.wikipedia.org/wiki/Flood_fill).
-`fill, x_cord, y_cord, char`
+`fill, x_cord, y_cord, string`
 
 It's worth noting that this fill command should be able to take in a **string** of any length and only get the **first** character of that string (meaning if it's a string of length 1, we're good, but if someone types in "@%&#^", then only @ is printed)
 
@@ -57,6 +62,3 @@ There is a text-file, `example_out.txt` in the root of this repository which we 
 
 Or linux command line:
 `diff output1 output2`
-
-## Edge Cases
-## Usage
