@@ -42,7 +42,7 @@ end
 module Drawable
   DIAGONAL_CHAR = {
     right: '\\',
-    left: '/',
+    left: '/'
   }.freeze
 
   def fill(point:, char:)
@@ -69,7 +69,7 @@ module Drawable
 
   def draw_horizontal_line(length:, point:)
     mover = point.dup
-    length.times do |x_offset|
+    length.times do
       mover.set(char: '-')
       mover = mover.move_right
     end
@@ -77,7 +77,7 @@ module Drawable
 
   def draw_vertical_line(length:, point:)
     mover = point.dup
-    length.times do |y_offset|
+    length.times do
       mover.set(char: '|')
       mover = mover.move_down
     end
@@ -163,15 +163,14 @@ class Constructor
     @game_board.fill(point: point(x.to_i, y.to_i), char: str.chars.first)
   end
 
-  def draw_filled_box(*args)
-  end
+  def draw_filled_box(*args); end
 
-  def draw_empty_box(*args)
-  end
+  def draw_empty_box(*args); end
 
   def point(x, y)
     Point.new(x: x, y: y, board: @game_board)
   end
 end
 
-puts Constructor.new(file: '../instructions.txt').game_board
+file = File.join(File.dirname(__FILE__), '../', 'instructions.txt')
+puts Constructor.new(file: file).game_board
