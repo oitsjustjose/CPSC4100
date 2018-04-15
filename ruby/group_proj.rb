@@ -86,8 +86,9 @@ module Drawable
   def draw_diagonal_line(length:, point:, direction:)
     diagonal_point = point.dup
     length.times do
-      diagonal_point = diagonal_point.send("move_#{direction}").move_down
+      diagonal_point = diagonal_point.send("move_#{direction}")
       diagonal_point.set(char: DIAGONAL_CHAR[direction])
+      diagonal_point = diagonal_point.move_down
     end
   end
 end
@@ -158,8 +159,8 @@ class Constructor
     @game_board.draw_diagonal_line(length: length.to_i, point: point(x.to_i, y.to_i), direction: direction.to_sym)
   end
 
-  def fill(x, y)
-    @game_board.fill(point: point(x.to_i, y.to_i), char: '@')
+  def fill(x, y, str)
+    @game_board.fill(point: point(x.to_i, y.to_i), char: str.chars.first)
   end
 
   def draw_filled_box(*args)
