@@ -1,12 +1,14 @@
 # CPSC 4100 - Group 5 Project - Due 4/18/2018
 ## TODO
 * We need all of the submissions.
-* [We need to discuss edge-cases](https://github.com/oitsjustjose/CPSC4100/issues/3).
+* We need each member to submit their page to the [report located here](https://docs.google.com/document/d/1mL7iQamNdYdcfMzy2o2aZtsb8wW4hbJQ_0H6KddiEpQ/edit?usp=sharing).
+
+## TODO - Resolved.
+* We will no-op invalid instructions. ~~[We need to discuss edge-cases](https://github.com/oitsjustjose/CPSC4100/issues/3).~~
 * No Shape support. ~~[We need to decide if we are supporting shapes.](https://github.com/oitsjustjose/CPSC4100/issues/4)~~
 * No configurable board size. ~~[We need to decide if we are allowing the board size to be configurable.](https://github.com/oitsjustjose/CPSC4100/issues/5)~~
 * Yes, fill will take a string and we use the first character of that string. ~~[Do we allow the fill-character to be specified?](https://github.com/oitsjustJose/CPSC4100/issues/6)~~
 * We will add simple running instructions, into each subfolder. ~~[Instructions for usage / professor.](https://github.com/oitsjustjose/CPSC4100/issues/7)~~
-* We need each member to submit their page to the [report located here](https://docs.google.com/document/d/1mL7iQamNdYdcfMzy2o2aZtsb8wW4hbJQ_0H6KddiEpQ/edit?usp=sharing).
 
 ## [Report - Google Docs](https://docs.google.com/document/d/1mL7iQamNdYdcfMzy2o2aZtsb8wW4hbJQ_0H6KddiEpQ/edit?usp=sharing)
 Each group is responsible for turning in a single PDF file containing the following items:
