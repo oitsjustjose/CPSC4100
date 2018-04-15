@@ -2,6 +2,7 @@
 ## TODO
 * We need all of the submissions.
 * We need each member to submit their page to the [report located here](https://docs.google.com/document/d/1mL7iQamNdYdcfMzy2o2aZtsb8wW4hbJQ_0H6KddiEpQ/edit?usp=sharing).
+* We need to write the conclusion portion of the paper, recommending a specific language.
 
 ## TODO - Resolved.
 * We will no-op invalid instructions. ~~[We need to discuss edge-cases](https://github.com/oitsjustjose/CPSC4100/issues/3).~~
