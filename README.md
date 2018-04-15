@@ -6,6 +6,19 @@
 * No configurable board size. ~~[We need to decide if we are allowing the board size to be configurable.](https://github.com/oitsjustjose/CPSC4100/issues/5)~~
 * Yes, fill will take a string and we use the first character of that string. ~~[Do we allow the fill-character to be specified?](https://github.com/oitsjustJose/CPSC4100/issues/6)~~
 * [Instructions for usage / professor.](https://github.com/oitsjustjose/CPSC4100/issues/7)
+* We need each member to submit their page to the [report located here](https://docs.google.com/document/d/1mL7iQamNdYdcfMzy2o2aZtsb8wW4hbJQ_0H6KddiEpQ/edit?usp=sharing).
+
+## [Report - Google Docs](https://docs.google.com/document/d/1mL7iQamNdYdcfMzy2o2aZtsb8wW4hbJQ_0H6KddiEpQ/edit?usp=sharing)
+Each group is responsible for turning in a single PDF file containing the following items:
+1. One overview page describing their problem and listing the languages used.
+2. Approximately one or two pages per language, describing the language and approach to solving the problem.
+Include the following items:
+
+* What distinguishes this language from the others used
+* What were any perceived benefits or problems experienced using this language for the solution.
+
+3. In conclusion, a supported recommendation for what language to use for this and similar problems.
+4. An appendix, organized by language, containing all source code and screenshots of the programs running.
 
 ## Assignment
 Each team member must submit a solution in a different programming language. The output and functionality of each program must match.
