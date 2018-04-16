@@ -51,7 +51,7 @@ void *print_grid() {
     list<str *> *__11, *row;
     list<list<str *> *>::for_in_loop __10;
     list<str *>::for_in_loop __14;
-    str *col, *s;
+    str *col, *rowStr;
     __iter<list<str *> *> *__8;
     __iter<str *> *__12;
     list<list<str *> *> *__7;
@@ -59,13 +59,13 @@ void *print_grid() {
 
 
     FOR_IN(row,grid,7,9,10)
-        s = const_3;
+        rowStr = const_3;
 
         FOR_IN(col,row,11,13,14)
-            s = (s)->__iadd__(col);
+            rowStr = (rowStr)->__iadd__(col);
         END_FOR
 
-        print2(NULL,0,1, s);
+        print2(NULL,0,1, rowStr);
     END_FOR
 
     return NULL;
@@ -118,7 +118,6 @@ void *draw_empty_box(__ss_int x, __ss_int y, __ss_int w, __ss_int h) {
             }
         END_FOR
 
-        print2(NULL,0,1, const_3);
     END_FOR
 
     return 0;
@@ -136,7 +135,7 @@ void *draw_diagonal(__ss_int x, __ss_int y, __ss_int size, str *dir) {
         i = 0;
 
         while ((i<size)) {
-            j = size;
+            j = (size-1);
 
             while ((j>=0)) {
                 if ((i==j)) {
@@ -279,7 +278,7 @@ void __init() {
     const_2 = new str(" not found");
     const_3 = new str("");
     const_4 = __char_cache[35];;
-    const_5 = new str("right");
+    const_5 = new str("left");
     const_6 = __char_cache[47];;
     const_7 = __char_cache[92];;
     const_8 = __char_cache[124];;

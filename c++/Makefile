@@ -3,7 +3,7 @@ CC=g++
 CCFLAGS=-O2 -Wno-deprecated $(CPPFLAGS) -I. -I${SHEDSKIN_LIBDIR} -I/usr/local/include
 LFLAGS=-lgc -lpcre $(LDFLAGS) -L/usr/local/lib
 
-CPPFILES=/Users/jose/Documents/GitHub/CPSC4100/c/group_proj.cpp \
+CPPFILES=/Users/jose/Documents/GitHub/CPSC4100/c++/group_proj.cpp \
 	${SHEDSKIN_LIBDIR}/sys.cpp \
 	${SHEDSKIN_LIBDIR}/stat.cpp \
 	${SHEDSKIN_LIBDIR}/re.cpp \
@@ -11,7 +11,7 @@ CPPFILES=/Users/jose/Documents/GitHub/CPSC4100/c/group_proj.cpp \
 	${SHEDSKIN_LIBDIR}/os/__init__.cpp \
 	${SHEDSKIN_LIBDIR}/builtin.cpp
 
-HPPFILES=/Users/jose/Documents/GitHub/CPSC4100/c/group_proj.hpp \
+HPPFILES=/Users/jose/Documents/GitHub/CPSC4100/c++/group_proj.hpp \
 	${SHEDSKIN_LIBDIR}/sys.hpp \
 	${SHEDSKIN_LIBDIR}/stat.hpp \
 	${SHEDSKIN_LIBDIR}/re.hpp \
