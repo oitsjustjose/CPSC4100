@@ -46,7 +46,6 @@ def draw_empty_box(x, y, w, h):
 		# It's not the top or bottom:
 			elif j == 0 or j == w - 1:
 				grid[y + j][x + i] = '#'
-		print("")
 
 
 def draw_diagonal(x, y, size, dir):
@@ -54,10 +53,10 @@ def draw_diagonal(x, y, size, dir):
 	# No-Op invalid inputs:
 	if x < 1 or y < 1 or size < 1 or y + size > len(grid) or x + size > len(grid[0]):
 		return
-	if "right" in dir:
+	if "left" in dir:
 		i = 0
 		while i < size:
-			j = size
+			j = size - 1
 			while j >= 0:
 				if i == j:
 					grid[y + j][x - i] = '/'
