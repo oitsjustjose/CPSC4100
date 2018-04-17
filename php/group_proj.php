@@ -9,7 +9,7 @@ for($i = 0; $i < 32; $i++){
 	}
 }
 
-//Writes ASCII output to the file.
+//Prints out as well as Writes ASCII output to the file.
 function print_grid(){
 	$artFile = fopen("Output.txt", "w") or die("Unable to open file!");
 	global $grid;
@@ -26,7 +26,7 @@ function print_grid(){
 	fclose($artFile);
 }
 
-//done
+//Filled Box Function, draws a filled in box given the starting point, and the given width and height.
 function draw_filled_box($x, $y, $w, $h){
 	global $grid;
 	
@@ -46,7 +46,7 @@ function draw_filled_box($x, $y, $w, $h){
 	}
 }
 
-//done
+//Empty Box Function, draws an empty box given the starting point, and the given width and height.
 function draw_empty_box($x, $y, $w, $h){
 	global $grid;
 	
@@ -73,7 +73,7 @@ function draw_empty_box($x, $y, $w, $h){
 	}
 }
 
-//done
+//Diagonal Line Function, Takes an X and Y coordinate, line length, and a string command. You must specify if the the line is going "left" or "right" otherwise the function will return invalid.
 function draw_diagonal($x, $y, $l, $dir){
 	global $grid;
 	
@@ -106,7 +106,7 @@ function draw_diagonal($x, $y, $l, $dir){
 	}
 }
 
-//done
+//Vertical Line Function, Takes an X and Y coordinate and line length.
 function draw_vertical($x, $y, $l){
 	global $grid;
 	
@@ -121,7 +121,7 @@ function draw_vertical($x, $y, $l){
 	}
 }
 
-//done
+//Horizontal Line Function, Takes an X and Y coordinate and line length.
 function draw_horizontal($x, $y, $l){
 	global $grid;
 	
@@ -136,7 +136,7 @@ function draw_horizontal($x, $y, $l){
 	}
 }
 
-//done
+//Flood Fill Function, Fills space around the given point using the first character within the given string.
 function fill($x, $y, $string){
 	global $grid;
 	
@@ -149,19 +149,19 @@ function fill($x, $y, $string){
 	
 	if($grid[$y][$x] == " "){
 		$grid[$y][$x] = $filler;
-		//north
+		//north check
 		if($grid[$y + 1][$x] == " "){
 			fill($x, $y + 1, $filler);
 		}
-		//south
+		//south check
 		if($grid[$y - 1][$x] == " "){
 			fill($x, $y - 1, $filler);
 		}
-		//east
+		//east check
 		if($grid[$y][$x + 1] == " "){
 			fill($x + 1, $y, $filler);
 		}
-		//west
+		//west check
 		if($grid[$y][$x - 1] == " "){
 			fill($x - 1, $y, $filler);
 		}
@@ -169,17 +169,12 @@ function fill($x, $y, $string){
 }
 
 //Test Cases
-
-//draw_filled_box(28, 0, 4, 4);
-
 draw_empty_box(0, 0, 4, 4); 
 draw_diagonal(16, 8, 7, "right");
 draw_diagonal(17, 8, 7, "left");
 draw_horizontal(9, 15, 16);
 draw_vertical(7, 7, 16);
 draw_vertical(26, 7, 16);
-//fill(2, 2, "@#$%^&");
-//fill(6, 6, "@#$%^&");
 fill(16, 13, "@#$%^&");
 print_grid();
 ?>
