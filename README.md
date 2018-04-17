@@ -19,7 +19,7 @@ You must be able to at least draw vertical and horizontal straight lines, and fi
 * Jose Stovall - **Python (Done)**
 * Colby Myers
 * Aaron Boggs - **Ruby (Done)**
-* Nicholas Haymore
+* Nicholas Haymore - **PHP (Done)**
 
 ## Instructions
 These are read-in from a text-file in the root of this repository: `instructions.txt`. Each of our programs should read from this file and produce their output. We support the following instructions:
