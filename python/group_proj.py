@@ -48,7 +48,7 @@ def draw_empty_box(x, y, w, h):
 				grid[y + j][x + i] = '#'
 
 
-def draw_diagonal(x, y, size, dir):
+def draw_diagonal_line(x, y, size, dir):
 	global grid
 	# No-Op invalid inputs:
 	if x < 1 or y < 1 or size < 1 or y + size > len(grid) or x + size > len(grid[0]):
@@ -69,7 +69,7 @@ def draw_diagonal(x, y, size, dir):
 					grid[y + j][x + i] = '\\'
 
 
-def draw_vertical(x, y, size):
+def draw_vertical_line(x, y, size):
 	global grid
 	# No-Op invalid inputs:
 	if x < 1 or y < 1 or size < 1 or y + size > len(grid):
@@ -78,7 +78,7 @@ def draw_vertical(x, y, size):
 		grid[y + i][x] = "|"
 
 
-def draw_horizontal(x, y, size):
+def draw_horizontal_line(x, y, size):
 	global grid
 	# No-Op invalid inputs:
 	if x < 1 or y < 1 or size < 1 or x + size > len(grid[0]):
@@ -94,25 +94,25 @@ def fill(x, y, char):
 	if x < 1 or y < 1:
 		return
 	if grid[y][x] == " ":
-		grid[y][x] = char
+		grid[y][x] = char[0]
 	try:
 		if grid[y - 1][x] == " ":
-			fill(x, y - 1, char)
+			fill(x, y - 1, char[0])
 	except IndexError:
 		pass
 	try:
 		if grid[y + 1][x] == " ":
-			fill(x, y + 1, char)
+			fill(x, y + 1, char[0])
 	except IndexError:
 		pass
 	try:
 		if grid[y][x - 1] == " ":
-			fill(x - 1, y, char)
+			fill(x - 1, y, char[0])
 	except IndexError:
 		pass
 	try:
 		if grid[y][x + 1] == " ":
-			fill(x + 1, y, char)
+			fill(x + 1, y, char[0])
 	except IndexError:
 		pass
 
@@ -121,26 +121,14 @@ def main():
 	file = open("../instructions.txt", "r")
 	for cmd in file.readlines():
 		parts = cmd.lower().replace(" ", "").split(",")
-		# Expecting draw_horizontal_line, x, y, size
-		if "draw_horizontal_line" in parts[0] and len(parts) == 4:
-			draw_horizontal(int(parts[1]), int(parts[2]), int(parts[3]))
-		# Expecting draw_vertical_line, x, y, size
-		elif "draw_vertical_line" in parts[0] and len(parts) == 4:
-			draw_vertical(int(parts[1]), int(parts[2]), int(parts[3]))
-		# Expecting draw_diagonal_line, x, y, size, dir
-		elif "draw_diagonal_line" in parts[0] and len(parts) == 5:
-			draw_diagonal(int(parts[1]), int(parts[2]), int(parts[3]), parts[4])
-		# Expecting draw_empty_box, x, y, w, h
-		elif "draw_empty_box" in parts[0] and len(parts) == 5:
-			draw_empty_box(int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]))
-		# Expecting draw_filled_box, x, y, w, h
-		elif "draw_filled_box" in parts[0] and len(parts) == 5:
-			draw_filled_box(int(parts[1]), int(parts[2]), int(parts[3]), int(parts[4]))
-		# Expecting fill, x, y, char
-		elif "fill" in parts[0] and len(parts) == 4:
-			fill(int(parts[1]), int(parts[2]), parts[3][0])
-		else:
-			print_err(cmd)
+		for i in range(len(parts)):
+			try:
+				parts[i] = eval(parts[i])
+			except NameError:
+				continue
+			except SyntaxError:
+				continue
+		parts[0](*parts[1:])
 	print_grid()
 
 
