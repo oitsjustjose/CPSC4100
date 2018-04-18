@@ -94,11 +94,11 @@ module Drawable
 
   def draw_empty_box(point:, width:, height: width, char: '#')
     top_left_width = point.dup
-    bottom_left_width = Point.new(x: point.x, y: point.y + height, board: self)
-    top_right_height = Point.new(x: point.x + width, y: point.y, board: self)
+    bottom_left_width = Point.new(x: point.x, y: point.y + height - 1, board: self)
+    top_right_height = Point.new(x: point.x + width - 1, y: point.y, board: self)
     top_left_height = point.dup
 
-    (width + 1).times do
+    width.times do
       top_left_width.set(char: char)
       top_left_width = top_left_width.move_right
 
@@ -106,7 +106,7 @@ module Drawable
       bottom_left_width = bottom_left_width.move_right
     end
 
-    (height + 1).times do
+    height.times do
       top_left_height.set(char: char)
       top_left_height = top_left_height.move_down
 
