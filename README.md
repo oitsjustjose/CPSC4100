@@ -75,11 +75,6 @@ Draws a box-like shape on the board with `#` characters.
 The center of the box is **not** filled in with any character.
 `draw_empty_box, x_cord, y_cord, width, height`
 
-<<<<<<< HEAD
-Note: The actual width and height of the box is `width + 1`, `height + 1`.
-
-=======
->>>>>>> 41622ad73c769db4a59cd9dc430c0ba988db2598
 ## Example Output
 There is a text-file, `example_out.txt` in the root of this repository which we can compare each other's output against. There are several online tools you can use to easily compare your output vs. our group's expected output:
 
