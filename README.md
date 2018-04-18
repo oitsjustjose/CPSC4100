@@ -6,7 +6,7 @@
 
 ## TODO - Resolved.
 * We will no-op invalid instructions. ~~[We need to discuss edge-cases](https://github.com/oitsjustjose/CPSC4100/issues/3).~~
-* No Shape support. ~~[We need to decide if we are supporting shapes.](https://github.com/oitsjustjose/CPSC4100/issues/4)~~
+* We will support draw empty box. ~~[We need to decide if we are supporting shapes.](https://github.com/oitsjustjose/CPSC4100/issues/4)~~
 * No configurable board size. ~~[We need to decide if we are allowing the board size to be configurable.](https://github.com/oitsjustjose/CPSC4100/issues/5)~~
 * Yes, fill will take a string and we use the first character of that string. ~~[Do we allow the fill-character to be specified?](https://github.com/oitsjustJose/CPSC4100/issues/6)~~
 * We will add simple running instructions, into each subfolder. ~~[Instructions for usage / professor.](https://github.com/oitsjustjose/CPSC4100/issues/7)~~
@@ -69,6 +69,13 @@ We are using a simple [flood-fill algorithm](https://en.wikipedia.org/wiki/Flood
 `fill, x_cord, y_cord, string`
 
 It's worth noting that this fill command should be able to take in a **string** of any length and only get the **first** character of that string (meaning if it's a string of length 1, we're good, but if someone types in "@%&#^", then only @ is printed)
+
+### draw\_empty\_box
+Draws a box-like shape on the board with `#` characters.
+The center of the box is **not** filled in with any character.
+`draw_empty_box, x_cord, y_cord, width, height`
+
+Note: The actual width and height of the box is `width + 1`, `height + 1`.
 
 ## Example Output
 There is a text-file, `example_out.txt` in the root of this repository which we can compare each other's output against. There are several online tools you can use to easily compare your output vs. our group's expected output:
