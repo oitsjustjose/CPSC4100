@@ -86,9 +86,32 @@ module Drawable
   def draw_diagonal_line(length:, point:, direction:)
     diagonal_point = point.dup
     length.times do
-      diagonal_point = diagonal_point.send("move_#{direction}")
       diagonal_point.set(char: DIAGONAL_CHAR[direction])
+      diagonal_point = diagonal_point.send("move_#{direction}")
       diagonal_point = diagonal_point.move_down
+    end
+  end
+
+  def draw_empty_box(point:, width:, height: width, char: '#')
+    top_left_width = point.dup
+    bottom_left_width = Point.new(x: point.x, y: point.y + height, board: self)
+    top_right_height = Point.new(x: point.x + width, y: point.y, board: self)
+    top_left_height = point.dup
+
+    (width + 1).times do
+      top_left_width.set(char: char)
+      top_left_width = top_left_width.move_right
+
+      bottom_left_width.set(char: char)
+      bottom_left_width = bottom_left_width.move_right
+    end
+
+    (height + 1).times do
+      top_left_height.set(char: char)
+      top_left_height = top_left_height.move_down
+
+      top_right_height.set(char: char)
+      top_right_height = top_right_height.move_down
     end
   end
 end
@@ -165,7 +188,9 @@ class Constructor
 
   def draw_filled_box(*args); end
 
-  def draw_empty_box(*args); end
+  def draw_empty_box(x, y, width, height)
+    @game_board.draw_empty_box(point: point(x.to_i, y.to_i), width: width.to_i, height: height.to_i)
+  end
 
   def point(x, y)
     Point.new(x: x, y: y, board: @game_board)
