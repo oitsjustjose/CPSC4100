@@ -1,4 +1,4 @@
-# CPSC 4100 - Group 5 Project - Due 4/18/2018
+# CPSC 4100 - Group 5 Project - Due 4/18/2018 @midnight
 ## TODO
 * We need all of the submissions.
 * We need each member to submit their page to the [report located here](https://docs.google.com/document/d/1mL7iQamNdYdcfMzy2o2aZtsb8wW4hbJQ_0H6KddiEpQ/edit?usp=sharing).
